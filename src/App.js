@@ -15,6 +15,15 @@ function App() {
     setAppointments(newAppointments);
   }
 
+  //delete appointment from state
+  const handleClick = index => {
+    const newAppointments = [...appointments];
+
+    newAppointments.splice(index, 1);
+    setAppointments(newAppointments);
+
+}
+
   return (
     <Fragment>
       <h1>Patient Administrator</h1>
@@ -30,6 +39,7 @@ function App() {
                 key={index}
                 index={index}
                 apntmt={apntmt}
+                handleClick={handleClick}
               />
             ))}
           </div>
