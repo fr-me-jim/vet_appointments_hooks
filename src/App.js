@@ -1,6 +1,7 @@
 import React, {useState, Fragment} from 'react';
 import Form from './components/Form';
 import Appointment from './components/Appointment';
+import { appendFile } from 'fs';
 
 function App() {
 
@@ -22,7 +23,10 @@ function App() {
     newAppointments.splice(index, 1);
     setAppointments(newAppointments);
 
-}
+  }
+
+  //conditional header rendering
+  const title = appointments.length === 0 ? 'No Appointments' : 'Manage Appointments';
 
   return (
     <Fragment>
@@ -34,6 +38,7 @@ function App() {
           </div>
 
           <div className="one-half column">
+            <h2>{title}</h2>
             {appointments.map((apntmt, index) => (
               <Appointment
                 key={index}
