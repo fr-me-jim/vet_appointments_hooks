@@ -1,11 +1,17 @@
-import React, {useState, Fragment} from 'react';
+import React, {useState, useEffect, Fragment} from 'react';
 import Form from './components/Form';
 import Appointment from './components/Appointment';
-import { appendFile } from 'fs';
 
 function App() {
 
-  const [appointments, setAppointments] = useState([]);
+  //load appointments from storage
+  let initialAppntmts = JSON.parse(localStorage.getItem('appointments'));
+
+  if(!initialAppntmts) {
+    initialAppntmts = [];
+  }
+
+  const [appointments, setAppointments] = useState(initialAppntmts);
 
   //add new appointments
   const createAppointment = nwApnt => {
@@ -24,6 +30,19 @@ function App() {
     setAppointments(newAppointments);
 
   }
+
+  //only when appointtments change or component mounted
+  useEffect(
+    () => {
+      //component mounted | updated
+      let initialAppntmts = JSON.parse(localStorage.getItem('appointments'));
+
+      if(initialAppntmts){
+        localStorage.setItem('appointments', JSON.stringify(appointments));
+      } else {
+        localStorage.setItem('appointments', JSON.stringify([]));
+      }
+    }, [appointments]);
 
   //conditional header rendering
   const title = appointments.length === 0 ? 'No Appointments' : 'Manage Appointments';
