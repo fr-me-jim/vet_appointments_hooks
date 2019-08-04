@@ -6,7 +6,7 @@ const Form = ({createAppointment}) => {
       pet : '',
       owner : '',
       date : '',
-      hour : '',
+      time : '',
       symptoms : ''
     };
   
@@ -68,13 +68,13 @@ const Form = ({createAppointment}) => {
             value={appointment.date}
           />               
   
-          <label>Hour</label>
+          <label>Time</label>
           <input 
             type="time" 
             className="u-full-width"
-            name="hour" 
+            name="time" 
             onChange={handleChange}
-            value={appointment.hour}
+            value={appointment.time}
           />
   
           <label>Symptoms</label>

@@ -7,7 +7,7 @@ const Appointment = ({apntmt, index, handleClick}) => {
         <p>Pet: <span>{apntmt.pet}</span></p>
         <p>Owner: <span>{apntmt.owner}</span></p>
         <p>Date: <span>{apntmt.date}</span></p>
-        <p>Hour: <span>{apntmt.hour}</span></p>
+        <p>Time: <span>{apntmt.time}</span></p>
         <p>Symptoms: <span>{apntmt.symptoms}</span></p>
         <button 
             onClick={() => handleClick(index)}
